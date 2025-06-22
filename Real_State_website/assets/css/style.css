@@ -1,13 +1,12 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 html {
   scrollbar-width: 10px;
 }
 
 /*=============== VARIABLES CSS ===============*/
 :root {
-  /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
   --first-color: hsl(228, 66%, 53%);
   --first-color-alt: hsl(228, 66%, 47%);
   --first-color-light: hsl(228, 62%, 59%);
@@ -18,11 +17,9 @@ html {
   --text-color-light: hsl(228, 12%, 75%);
   --border-color: hsl(228, 99%, 98%);
   --body-color: #fff;
-  /* --body-color: black; */
   --container-color: #fff;
+  --shadow-box-color-light: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 
-  /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Poppins", sans-serif;
   --biggest-font-size: 2.25rem;
   --h1-font-size: 1.5rem;
@@ -32,16 +29,13 @@ html {
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
 
-  /*========== Font weight ==========*/
   --font-medium: 500;
   --font-semi-bold: 600;
 
-  /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
 }
 
-/* Responsive typography */
 @media screen and (min-width: 1024px) {
   :root {
     --biggest-font-size: 4rem;
@@ -54,7 +48,6 @@ html {
   }
 }
 
-/*=============== BASE ===============*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -71,13 +64,11 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
-  transition: 0.3s; /* For animation dark mode */
+  transition: 0.3s;
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
 }
@@ -95,23 +86,40 @@ img {
   height: auto;
 }
 
-input,
-button {
+input, button {
   font-family: var(--body-font);
   outline: none;
   border: none;
 }
 
-/*=============== THEME ===============*/
+button {
+  padding: 0.7em 1.5em;
+  border-radius: 10px;
+  background-color: var(--first-color);
+  color: white;
+  transition: background-color 0.3s;
+}
 
-/*========== Variables Dark theme ==========*/
+button:hover {
+  background-color: var(--first-color-alt);
+}
 
-/*========== 
-    Color changes in some parts of 
-    the website, in dark theme 
-==========*/
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
 
-/*=============== REUSABLE CSS CLASSES ===============*/
+.buttons i {
+  font-size: var(--h2-font-size);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.buttons i:hover {
+  color: var(--first-color);
+}
 
 .section__title {
   font-size: var(--h2-font-size);
@@ -129,7 +137,210 @@ button {
 }
 
 .section {
-    margin: 2em auto;
-    width: 90%;
-    height: 100vh;
+  margin: 2em auto;
+  width: 90%;
+  height: 100vh;
+}
+
+header {
+  width: 100%;
+  height: 195vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(170deg, hsl(0, 0%, 22%) 0%, hsl(0, 0%, 6%) 30%);
+}
+
+nav {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  z-index: var(--z-fixed);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+}
+
+.scroll-header {
+  box-shadow: var(--shadow-box-color-light);
+  background-color: var(--body-color);
+}
+
+.scroll-header .logo i,
+.scroll-header .logo span,
+.scroll-header .buttons i {
+  color: var(--first-color-alt);
+}
+
+header nav .menu ul li i {
+  font-size: var(--h1-font-size);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+header nav .menu ul li i:hover {
+  background-color: var(--first-color-alt);
+  padding: 0.6rem;
+  border-radius: 50%;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: var(--shadow-box-color-light);
+}
+
+nav .logo i, nav .buttons i, nav .logo span {
+  color: white;
+  transition: color 0.3s;
+}
+
+nav .logo:hover i, nav .logo:hover span {
+  color: var(--first-color);
+}
+
+nav .logo {
+  font-size: var(--h2-font-size);
+}
+
+:is(.logo:hover .buttons i) {
+  color: var(--first-color);
+}
+
+nav .menu {
+  display: none;
+}
+
+nav .menu-v2 {
+  position: fixed;
+  bottom: 2em;
+  left: 2em;
+  right: 2em;
+  width: 90%;
+  height: 3.8em;
+  margin: 0 auto;
+  background-color: var(--body-color);
+  border-radius: 15px;
+  box-shadow: var(--shadow-box-color-light);
+}
+
+nav .menu-v2 ul {
+  margin: 0.4em 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav .menu-v2 ul span {
+  display: none;
+}
+
+nav .menu-v2 ul i {
+  font-size: var(--h1-font-size);
+  color: var(--text-color-light);
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+nav .menu-v2 ul i:hover {
+  background-color: var(--first-color);
+  color: white;
+  transform: scale(1.2);
+}
+
+.home {
+  padding-top: 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
+
+.home .container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.home form {
+  width: 100%;
+  display: flex;
+  background-color: var(--body-color);
+  padding: 0.35rem 0.75rem;
+  align-items: center;
+  border-radius: 0.75rem;
+  border: 3px solid var(--text-color-light);
+  margin-bottom: 2rem;
+}
+
+.home form i {
+  font-size: 1.5rem;
+  color: var(--first-color);
+}
+
+.home form input {
+  width: 90%;
+  background-color: var(--body-color);
+  margin: 0 0.5rem;
+  color: var(--text-color);
+}
+
+.home form input::placeholder {
+  color: var(--text-color-light);
+}
+
+.home .text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.home .text h1 {
+  color: var(--first-color-lighten);
+  font-size: var(--biggest-font-size);
+  line-height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.home .text p {
+  color: var(--text-color-light);
+  margin-bottom: 2rem;
+}
+
+.home .more {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.home .more .home__value-number {
+  display: flex;
+  flex-direction: column;
+}
+
+.home .more h1 {
+  color: var(--text-color-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home .more h1 span {
+  color: var(--second-color);
+  font-size: 30px;
+}
+
+.home .more .home__value-description {
+  color: var(--text-color-light);
+}
+
+.home .img img {
+    border-radius: 40% 40% 0 0;
+    width: 100%;
+    height: 500px;
+    box-shadow: var(--shadow-box-color-light);
 }
