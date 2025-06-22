@@ -3,7 +3,8 @@
 
 /*=============== SCROLLBAR WIDTH ===============*/
 html {
-  scrollbar-width: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--first-color) var(--body-color);
 }
 
 /*=============== VARIABLES CSS ===============*/
@@ -62,10 +63,12 @@ html {
 }
 
 /*=============== RESET AND BASE STYLES ===============*/
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -78,7 +81,7 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
-  transition: 0.3s;
+  transition: background-color 0.3s, color 0.3s;
   overflow-x: hidden;
 }
 
@@ -88,6 +91,7 @@ h2,
 h3 {
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
+  line-height: 1.2;
 }
 
 ul {
@@ -96,11 +100,13 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 /*=============== FORM ELEMENTS ===============*/
@@ -111,17 +117,23 @@ button {
   border: none;
 }
 
-/*=============== BUTTONS ===============*/
+input, textarea {
+  background: none;
+  color: inherit;
+}
+
 button {
   padding: 0.7em 1.5em;
   border-radius: 10px;
   background-color: var(--first-color);
-  color: white;
-  transition: background-color 0.3s;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
 }
 
 button:hover {
   background-color: var(--first-color-alt);
+  transform: scale(1.05);
 }
 
 .buttons {
@@ -181,6 +193,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1em 2em;
+  background: transparent;
 }
 
 /* Sticky scroll effect */
@@ -195,27 +208,25 @@ nav {
   color: var(--first-color-alt);
 }
 
-/* Menu icons */
 header nav .menu ul li i {
   font-size: var(--h1-font-size);
   color: var(--text-color);
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
 header nav .menu ul li i:hover {
   background-color: var(--first-color-alt);
   padding: 0.6rem;
   border-radius: 50%;
-  color: white;
+  color: #fff;
   transform: scale(1.1);
   box-shadow: var(--shadow-box-color-light);
 }
 
-/* Logo and button color transitions */
 nav .logo i,
 nav .buttons i,
 nav .logo span {
-  color: white;
+  color: #fff;
   transition: color 0.3s;
 }
 
@@ -226,14 +237,11 @@ nav .logo:hover span {
 
 nav .logo {
   font-size: var(--h2-font-size);
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
 }
 
-/* Hover effect for buttons inside logo (if nested) */
-:is(.logo:hover .buttons i) {
-  color: var(--first-color);
-}
-
-/* Hide default menu on small screens */
 nav .menu {
   display: none;
 }
@@ -250,12 +258,15 @@ nav .menu-v2 {
   background-color: var(--body-color);
   border-radius: 15px;
   box-shadow: var(--shadow-box-color-light);
+  z-index: var(--z-fixed);
 }
 
 nav .menu-v2 ul {
   margin: 0.4em 2em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 0;
 }
 
 nav .menu-v2 ul span {
@@ -270,12 +281,12 @@ nav .menu-v2 ul i {
   text-align: center;
   padding: 10px;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
 nav .menu-v2 ul i:hover {
   background-color: var(--first-color);
-  color: white;
+  color: #fff;
   transform: scale(1.1);
 }
 
@@ -294,7 +305,6 @@ nav .menu-v2 ul i:hover {
   gap: 0.5em;
 }
 
-/* Search form styling */
 .home form {
   width: 100%;
   display: flex;
@@ -304,6 +314,7 @@ nav .menu-v2 ul i:hover {
   border-radius: 0.75rem;
   border: 3px solid var(--text-color-light);
   margin-bottom: 2rem;
+  gap: 0.5rem;
 }
 
 .home form i {
@@ -322,7 +333,6 @@ nav .menu-v2 ul i:hover {
   color: var(--text-color-light);
 }
 
-/* Home text content */
 .home .text {
   display: flex;
   flex-direction: column;
@@ -334,7 +344,7 @@ nav .menu-v2 ul i:hover {
 .home .text h1 {
   color: var(--first-color-lighten);
   font-size: var(--biggest-font-size);
-  line-height: 3rem;
+  line-height: 1.15;
   margin-bottom: 2rem;
 }
 
@@ -343,13 +353,13 @@ nav .menu-v2 ul i:hover {
   margin-bottom: 2rem;
 }
 
-/* Stats section */
 .home .more {
   display: flex;
   width: 80%;
   margin: 0 auto;
   align-items: center;
   justify-content: space-around;
+  gap: 1.5em;
 }
 
 .home .more .home__value-number {
@@ -366,26 +376,26 @@ nav .menu-v2 ul i:hover {
 
 .home .more h1 span {
   color: var(--second-color);
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 .home .more .home__value-description {
   color: var(--text-color-light);
 }
 
-/* Image in home section */
 .home .img img {
   border-radius: 40% 40% 0 0;
   width: 100%;
-  height: 500px;
+  max-height: 500px;
+  object-fit: cover;
   box-shadow: var(--shadow-box-color-light);
 }
 
-/* active status */
 .activeBtn {
   background-color: var(--first-color);
-  color: white !important;
+  color: #fff !important;
   transform: scale(1.1);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 /*=============== LOGOS ===============*/
@@ -401,14 +411,16 @@ nav .menu-v2 ul i:hover {
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem 2rem;
 }
+
 .logos .logo__container img {
   height: 60px;
   opacity: 0.3;
+  transition: opacity 0.3s, transform 0.3s;
 }
+
 .logos .logo__container img:hover {
   opacity: 1;
-  transform: scale(1.3);
-  transition: all 0.3s ease;
+  transform: scale(1.15);
 }
 
 /*=============== POPULAR ===============*/
@@ -422,6 +434,8 @@ nav .menu-v2 ul i:hover {
   border-radius: 1rem;
   margin: 1rem auto;
   background-color: var(--body-color);
+  box-shadow: 0 6px 20px 0 rgba(0,0,0,0.07);
+  transition: box-shadow 0.3s;
 }
 .popular .container .card img {
   border-radius: 1rem;
@@ -433,7 +447,7 @@ nav .menu-v2 ul i:hover {
 }
 
 .popular__price {
-  font-size: large;
+  font-size: 1.1rem;
   color: var(--text-color);
   margin-bottom: 0.25rem;
 }
@@ -444,12 +458,11 @@ nav .menu-v2 ul i:hover {
   margin-bottom: 0.75rem;
 }
 .popular__description {
-  font-size: small;
+  font-size: 0.95rem;
 }
 
 .popular .card:hover {
   box-shadow: 0 12px 16px hsla(228, 66%, 45%, 0.1);
-  transition: all 0.3s ease;
 }
 
 .popular > h2 {
@@ -466,9 +479,10 @@ nav .menu-v2 ul i:hover {
   text-align: center;
   font-size: 1.2rem;
 }
+
 /*=============== SUBSCRIBE ===============*/
 .main .subscribe-part {
-  margin: 3rem auto;
+  margin: 3rem auto 6rem auto;
   width: 85%;
   background-color: var(--first-color-light);
   height: 290px;
@@ -479,8 +493,7 @@ nav .menu-v2 ul i:hover {
   justify-content: center;
   padding: 0 3rem;
   row-gap: 0.5rem;
-  margin-bottom: 6rem;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s;
 }
 .main .subscribe-part h2 {
   color: #fff;
@@ -488,7 +501,7 @@ nav .menu-v2 ul i:hover {
 }
 .main .subscribe-part p {
   color: #fff;
-  font-size: var(--p-font-size);
+  font-size: var(--normal-font-size);
   padding: 1rem;
   text-align: center;
 }
@@ -499,21 +512,20 @@ nav .menu-v2 ul i:hover {
   height: 40px;
   background-color: rgba(129, 147, 223, 0.2);
   color: #fff;
+  transition: background-color 0.3s, transform 0.2s;
 }
 .main .subscribe-part button:hover {
-  transform: scale(1.2);
+  transform: scale(1.08);
   background-color: rgba(129, 147, 223, 0.9);
-  transition: all 0.3s ease;
 }
 
 /*=============== VALUE ===============*/
 .value {
-  margin: 0 2rem;
+  margin: 0 2rem 4rem 2rem;
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
   align-items: center;
-  margin-bottom: 4rem;
 }
 
 .value img {
@@ -521,7 +533,8 @@ nav .menu-v2 ul i:hover {
   height: 380px;
   overflow: hidden;
   border-radius: 125px 125px 12px 12px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--shadow-box-color-light);
+  object-fit: cover;
 }
 
 .value .text-container {
@@ -544,12 +557,11 @@ nav .menu-v2 ul i:hover {
 .value .container .items {
   box-shadow: 0 12px 16px hsla(228, 66%, 45%, 0.1);
   padding: 1rem 2rem;
-  transition: all 0.3s;
   border-radius: 15px;
+  transition: transform 0.3s;
 }
 .value .container .items:hover {
   transform: scale(1.08);
-  transition: all 0.3s;
 }
 
 .value .container .items .header {
@@ -572,6 +584,7 @@ nav .menu-v2 ul i:hover {
 
 .arrow {
   display: inline-block;
+  transition: transform 0.3s;
 }
 
 .rotate {
@@ -592,13 +605,12 @@ nav .menu-v2 ul i:hover {
 
 /*=============== CONTACT ===============*/
 .contact {
-  margin: 0 2em;
+  margin: 0 2em 4rem 2em;
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4rem;
 }
 
 .contact img {
@@ -606,7 +618,8 @@ nav .menu-v2 ul i:hover {
   height: 380px;
   overflow: hidden;
   border-radius: 125px 125px 12px 12px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--shadow-box-color-light);
+  object-fit: cover;
 }
 
 .contact .text .section__subtitle {
@@ -640,11 +653,10 @@ nav .menu-v2 ul i:hover {
   padding: 1rem;
   border-radius: 15px;
   row-gap: 0.3rem;
-  transition: all 0.3s;
+  transition: transform 0.3s;
 }
 .contact .container .card:hover {
-  transform: scale(1.2);
-  transition: all 0.3s;
+  transform: scale(1.08);
 }
 .contact .container .card .icon {
   width: 100%;
@@ -652,7 +664,7 @@ nav .menu-v2 ul i:hover {
   align-items: center;
   justify-content: flex-start;
   column-gap: 0.5rem;
-  transition: all 0.3s;
+  transition: color 0.3s;
 }
 .contact .container .card p {
   font-size: var(--smaller-font-size);
@@ -666,8 +678,8 @@ nav .menu-v2 ul i:hover {
   padding: 0.4rem;
   border-radius: 50%;
   text-align: center;
-  font-size: large;
-  transition: all 0.3s;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .contact .container .card button:hover {
@@ -677,11 +689,10 @@ nav .menu-v2 ul i:hover {
 /*=============== FOOTER ===============*/
 footer {
   width: 100%;
-  margin: 1rem;
+  margin: 1rem 0 6rem 0;
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  margin-bottom: 6rem;
 }
 
 footer .start {
@@ -691,7 +702,7 @@ footer .start {
 }
 
 footer .start .home-f a {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 footer .start .container {
   display: grid;
@@ -702,25 +713,25 @@ footer .start .container {
 
 footer ul li a {
   color: var(--text-color);
+  transition: color 0.2s;
 }
 footer ul li a:hover {
   color: var(--first-color-alt);
-  transition: all 0.2s ease;
 }
 footer .Follow-us ul {
   display: flex;
-  gap: 0.2rem;
+  gap: 0.5rem;
 }
 footer .Follow-us ul i {
   display: flex;
   margin-top: 0.5rem;
   padding: 1rem;
   border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
 }
 footer .Follow-us ul i:hover {
   color: #fff;
   background-color: var(--first-color-alt);
-  transition: all 0.3s;
 }
 
 footer .end {
