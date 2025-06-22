@@ -32,6 +32,31 @@ function updateActiveLink() {
 
 window.addEventListener("scroll", updateActiveLink);
 
-// ==================== swiper ===================
+// =================== toggleAccordion ====================
+function toggleAccordion(arrow) {
+  const allContents = document.querySelectorAll(
+    ".value .text-container .container .items .content"
+  );
+  const allArrows = document.querySelectorAll(
+    ".value .text-container .container .items .arrow"
+  );
 
+  // Close all contents and reset all arrows
+  allContents.forEach((content) => {
+    content.style.maxHeight = "0px";
+    content.classList.remove("open");
+  });
 
+  allArrows.forEach((a) => {
+    a.classList.remove("rotate");
+  });
+
+  // Get the target content of the clicked arrow
+  const content = arrow.closest(".items").querySelector(".content");
+
+  // If it's not already open, open it and rotate the arrow
+
+  content.style.maxHeight = content.scrollHeight + "px";
+  content.classList.toggle("open");
+  arrow.classList.toggle("rotate");
+}
