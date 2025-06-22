@@ -1,25 +1,35 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+/*=============== SCROLLBAR WIDTH ===============*/
 html {
   scrollbar-width: 10px;
 }
 
 /*=============== VARIABLES CSS ===============*/
 :root {
+  /* Primary Colors */
   --first-color: hsl(228, 66%, 53%);
   --first-color-alt: hsl(228, 66%, 47%);
   --first-color-light: hsl(228, 62%, 59%);
   --first-color-lighten: hsl(228, 100%, 97%);
+
+  /* Accent Color */
   --second-color: hsl(25, 83%, 53%);
+
+  /* Text and Background Colors */
   --title-color: hsl(228, 57%, 28%);
   --text-color: hsl(228, 15%, 50%);
   --text-color-light: hsl(228, 12%, 75%);
   --border-color: hsl(228, 99%, 98%);
   --body-color: #fff;
   --container-color: #fff;
-  --shadow-box-color-light: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 
+  /* Shadows */
+  --shadow-box-color-light: 0 4px 8px rgba(0, 0, 0, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.19);
+
+  /* Typography */
   --body-font: "Poppins", sans-serif;
   --biggest-font-size: 2.25rem;
   --h1-font-size: 1.5rem;
@@ -29,13 +39,16 @@ html {
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
 
+  /* Font Weights */
   --font-medium: 500;
   --font-semi-bold: 600;
 
+  /* Z-Index Layers */
   --z-tooltip: 10;
   --z-fixed: 100;
 }
 
+/* Responsive font sizes for larger screens */
 @media screen and (min-width: 1024px) {
   :root {
     --biggest-font-size: 4rem;
@@ -48,6 +61,7 @@ html {
   }
 }
 
+/*=============== RESET AND BASE STYLES ===============*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -68,7 +82,10 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3 {
+/*=============== TYPOGRAPHY ===============*/
+h1,
+h2,
+h3 {
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
 }
@@ -86,12 +103,15 @@ img {
   height: auto;
 }
 
-input, button {
+/*=============== FORM ELEMENTS ===============*/
+input,
+button {
   font-family: var(--body-font);
   outline: none;
   border: none;
 }
 
+/*=============== BUTTONS ===============*/
 button {
   padding: 0.7em 1.5em;
   border-radius: 10px;
@@ -121,6 +141,7 @@ button:hover {
   color: var(--first-color);
 }
 
+/*=============== SECTION TITLES ===============*/
 .section__title {
   font-size: var(--h2-font-size);
   margin-bottom: 1rem;
@@ -139,9 +160,9 @@ button:hover {
 .section {
   margin: 2em auto;
   width: 90%;
-  height: 100vh;
 }
 
+/*=============== HEADER ===============*/
 header {
   width: 100%;
   height: 195vh;
@@ -150,6 +171,7 @@ header {
   background: linear-gradient(170deg, hsl(0, 0%, 22%) 0%, hsl(0, 0%, 6%) 30%);
 }
 
+/*=============== NAVIGATION ===============*/
 nav {
   width: 100%;
   height: 60px;
@@ -161,6 +183,7 @@ nav {
   padding: 1em 2em;
 }
 
+/* Sticky scroll effect */
 .scroll-header {
   box-shadow: var(--shadow-box-color-light);
   background-color: var(--body-color);
@@ -172,6 +195,7 @@ nav {
   color: var(--first-color-alt);
 }
 
+/* Menu icons */
 header nav .menu ul li i {
   font-size: var(--h1-font-size);
   color: var(--text-color);
@@ -187,12 +211,16 @@ header nav .menu ul li i:hover {
   box-shadow: var(--shadow-box-color-light);
 }
 
-nav .logo i, nav .buttons i, nav .logo span {
+/* Logo and button color transitions */
+nav .logo i,
+nav .buttons i,
+nav .logo span {
   color: white;
   transition: color 0.3s;
 }
 
-nav .logo:hover i, nav .logo:hover span {
+nav .logo:hover i,
+nav .logo:hover span {
   color: var(--first-color);
 }
 
@@ -200,14 +228,17 @@ nav .logo {
   font-size: var(--h2-font-size);
 }
 
+/* Hover effect for buttons inside logo (if nested) */
 :is(.logo:hover .buttons i) {
   color: var(--first-color);
 }
 
+/* Hide default menu on small screens */
 nav .menu {
   display: none;
 }
 
+/* Bottom navigation for mobile/tablet */
 nav .menu-v2 {
   position: fixed;
   bottom: 2em;
@@ -245,9 +276,10 @@ nav .menu-v2 ul i {
 nav .menu-v2 ul i:hover {
   background-color: var(--first-color);
   color: white;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
+/*=============== HOME SECTION ===============*/
 .home {
   padding-top: 4em;
   display: flex;
@@ -262,6 +294,7 @@ nav .menu-v2 ul i:hover {
   gap: 0.5em;
 }
 
+/* Search form styling */
 .home form {
   width: 100%;
   display: flex;
@@ -289,6 +322,7 @@ nav .menu-v2 ul i:hover {
   color: var(--text-color-light);
 }
 
+/* Home text content */
 .home .text {
   display: flex;
   flex-direction: column;
@@ -309,6 +343,7 @@ nav .menu-v2 ul i:hover {
   margin-bottom: 2rem;
 }
 
+/* Stats section */
 .home .more {
   display: flex;
   width: 80%;
@@ -338,9 +373,100 @@ nav .menu-v2 ul i:hover {
   color: var(--text-color-light);
 }
 
+/* Image in home section */
 .home .img img {
-    border-radius: 40% 40% 0 0;
-    width: 100%;
-    height: 500px;
-    box-shadow: var(--shadow-box-color-light);
+  border-radius: 40% 40% 0 0;
+  width: 100%;
+  height: 500px;
+  box-shadow: var(--shadow-box-color-light);
 }
+
+/* active status */
+.activeBtn {
+  background-color: var(--first-color);
+  color: white !important;
+  transform: scale(1.1);
+}
+
+/*=============== LOGOS ===============*/
+.logos {
+  text-align: center;
+}
+
+.logos .logo__container {
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 2rem;
+}
+.logos .logo__container img {
+  height: 60px;
+  opacity: 0.3;
+}
+.logos .logo__container img:hover {
+  opacity: 1;
+  transform: scale(1.3);
+  transition: all 0.3s ease;
+}
+
+/*=============== POPULAR ===============*/
+.popular .container {
+  width: 100%;
+  padding-bottom: 2rem;
+}
+.popular .container .card {
+  width: 290px;
+  padding: 0.5rem 0.5rem 1.5rem;
+  border-radius: 1rem;
+  margin: 1rem auto;
+  background-color: var(--body-color);
+}
+.popular .container .card img {
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.popular .card .text {
+  padding: 0 1rem;
+}
+
+.popular__price {
+  font-size: large;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+.popular__price span {
+  color: var(--second-color);
+}
+.popular__title {
+  margin-bottom: 0.75rem;
+}
+.popular__description {
+  font-size: small;
+}
+
+.popular .card:hover {
+  box-shadow: 0 12px 16px hsla(228, 66%, 45%, 0.1);
+  transition: all 0.3s ease;
+}
+
+.popular > h2 {
+  font-size: var(--h1-font-size);
+}
+.popular span {
+  font-size: var(--h3-font-size);
+}
+
+.swiper-slide {
+  background: #eee;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+
+
+
