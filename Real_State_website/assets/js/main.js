@@ -23,8 +23,10 @@ function updateActiveLink() {
     if (scrollPos >= top && scrollPos < bottom) {
       links.forEach((link) => {
         const icon = link.querySelector("i");
+        const span = link.querySelector("span");
         const match = link.getAttribute("href") === `#${id}`;
         icon.classList.toggle("activeBtn", match);
+        span.classList.toggle("activeLink", match);
       });
     }
   });
@@ -60,3 +62,34 @@ function toggleAccordion(arrow) {
   content.classList.toggle("open");
   arrow.classList.toggle("rotate");
 }
+
+/*=============== DARK LIGHT THEME ===============*/ 
+const darkTheme = 'dark-theme'
+const moonIcon = document.getElementById('night')
+const sunIcon = document.getElementById('light')
+
+// Get saved theme from localStorage
+const selectedTheme = localStorage.getItem('selected-theme')
+
+// Apply saved theme on load
+if (selectedTheme === 'dark') {
+  document.body.classList.add(darkTheme)
+  moonIcon.style.display = 'none'
+  sunIcon.style.display = 'inline'
+}
+
+// Toggle theme on moon icon click (switch to dark)
+moonIcon.addEventListener('click', () => {
+  document.body.classList.add(darkTheme)
+  moonIcon.style.display = 'none'
+  sunIcon.style.display = 'inline'
+  localStorage.setItem('selected-theme', 'dark')
+})
+
+// Toggle theme on sun icon click (switch to light)
+sunIcon.addEventListener('click', () => {
+  document.body.classList.remove(darkTheme)
+  sunIcon.style.display = 'none'
+  moonIcon.style.display = 'inline'
+  localStorage.setItem('selected-theme', 'light')
+})
