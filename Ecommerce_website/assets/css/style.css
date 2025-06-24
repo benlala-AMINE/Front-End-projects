@@ -53,6 +53,7 @@ header {
   position: fixed;
   z-index: 99;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  top: 0;
 }
 
 nav {
@@ -696,5 +697,134 @@ footer li {
     font-size: 22px;
     cursor: pointer;
   }
+
+  .brand {
+    display: flex;
+    flex-flow: row wrap;
+    height: fit-content;
+    margin: 2em 0;
+    height: 300px;
+  }
+  .features {
+    padding: 1em;
+  }
+
+  .infinite-scroll {
+    width: 100%;
+    overflow: hidden;
+    background: #f9f9f9;
+  }
+
+  .scroll-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;
+  }
+
+  .scroll-track a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #333;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .scroll {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .scroll .container {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .small-footer {
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+  }
+  footer > .features {
+    display: none;
+  }
+  footer > .contact {
+    display: none;
+  }
+  .footer-sml {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  footer .one {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  footer .icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  footer > .icon {
+    display: none;
+  }
+  footer > .pay {
+    display: none;
+  }
+  footer > .copy {
+    display: none;
+  }
 }
 
+.footer-sml {
+  display: none;
+}
+
+.small-footer {
+  display: none;
+}
+
+.myShoesSwiper {
+  width: 90%;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.swiper-wrapper {
+  position: relative;
+  margin: 2em;
+}
+
+.scroll .container {
+  display: flex;
+  margin: 0 auto;
+}
+
+.scroll .container > div {
+  width: 400px; /* Optional: control width of each box */
+  position: relative;
+}
+.scroll .container > div .text {
+  width: fit-content;
+  left: 40px;
+}

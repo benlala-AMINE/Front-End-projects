@@ -12,3 +12,9 @@ closing.addEventListener('click', () => {
   bars.style.display = "block";
 });
 
+
+const scrolling = document.querySelector(".scroll")
+
+if (window.matchMedia("(max-width: 600px)").matches) {
+  scrolling.classList.add("swiper");
+}
