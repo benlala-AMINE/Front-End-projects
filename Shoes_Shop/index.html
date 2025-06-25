@@ -14,6 +14,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!--=============== ICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
   </head>
   <body>
     <header>
@@ -22,18 +27,39 @@
           <h1>Shoe<span>s</span></h1>
         </div>
 
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#Products">Products</a></li>
-          <li><a href="#About">About</a></li>
-          <li><a href="#review">Review</a></li>
-          <li><a href="#services">Services</a></li>
-        </ul>
-
-        <div class="icons">
-          <i class="fa-solid fa-heart"></i>
-          <i class="fa-solid fa-cart-shopping"></i>
-          <i class="fa-solid fa-user"></i>
+        <div class="big-menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#Products">Products</a></li>
+            <li><a href="#About">About</a></li>
+            <li><a href="#review">Review</a></li>
+            <li><a href="#services">Services</a></li>
+          </ul>
+          <div class="icons">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-user"></i>
+          </div>
+        </div>
+        <div class="small-menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#Products">Products</a></li>
+            <li><a href="#About">About</a></li>
+            <li><a href="#review">Review</a></li>
+            <li><a href="#services">Services</a></li>
+          </ul>
+          <div class="icons">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="close" id="close">
+            <i class="fa-solid fa-x" id="close"></i>
+          </div>
+        </div>
+        <div class="open" id="bars">
+          <i class="fa-solid fa-bars"></i>
         </div>
       </nav>
     </header>
@@ -276,22 +302,10 @@
         <div class="about_main">
           <div class="about_image">
             <div class="about_small_image">
-              <img
-                src="assets/img/red_shoes1.png"
-                onclick="functio(this)"
-              />
-              <img
-                src="assets/img/red_shoes2.png"
-                onclick="functio(this)"
-              />
-              <img
-                src="assets/img/red_shoes3.png"
-                onclick="functio(this)"
-              />
-              <img
-                src="assets/img/red_shoes4.png"
-                onclick="functio(this)"
-              />
+              <img src="assets/img/red_shoes1.png" onclick="functio(this)" />
+              <img src="assets/img/red_shoes2.png" onclick="functio(this)" />
+              <img src="assets/img/red_shoes3.png" onclick="functio(this)" />
+              <img src="assets/img/red_shoes4.png" onclick="functio(this)" />
             </div>
 
             <div class="image_container">
@@ -631,5 +645,7 @@
         </div>
       </footer>
     </main>
+
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
